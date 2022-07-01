@@ -20,6 +20,21 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final questions = const [
+    {
+      'questionText': 'What\'s yours favorite color?',
+      'answers': ['Black', 'Red', 'Green', 'White'],
+    },
+    {
+      'questionText': 'What\'s yours favorite animal?',
+      'answers': ['Rabbit', 'Snake', 'Elephant', 'Lion'],
+    },
+    {
+      'questionText': 'What\'s yours favorite Instructor?',
+      'answers': ['Max1', 'Max2', 'Max3'],
+    },
+  ];
+
   var _questionIndex = 0;
 
   void _answerQuestion() {
@@ -28,25 +43,15 @@ class _MyAppState extends State<MyApp> {
     });
 
     print(_questionIndex);
+    if (_questionIndex < questions.length) {
+      print('We have more questions!');
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     //Map() or {}
-    var questions = [
-      {
-        'questionText': 'What\'s yours favorite color?',
-        'answers': ['Black', 'Red', 'Green', 'White'],
-      },
-      {
-        'questionText': 'What\'s yours favorite animal?',
-        'answers': ['Rabbit', 'Snake', 'Elephant', 'Lion'],
-      },
-      {
-        'questionText': 'What\'s yours favorite Instructor?',
-        'answers': ['Max1', 'Max2', 'Max3'],
-      },
-    ];
+
     print(questions[1]['questiontext']);
     return MaterialApp(
       home: Scaffold(
@@ -56,8 +61,6 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           children: [
             Question(
-              //questions[_questionIndex],
-              //abc[_questionIndex],
               questions[_questionIndex]['questionText'].toString(),
             ),
             ...(questions[_questionIndex]['answers'] as List<String>)
